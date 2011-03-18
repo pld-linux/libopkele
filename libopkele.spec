@@ -13,6 +13,7 @@ Source0:	http://kin.klever.net/dist/%{name}-%{version}.tar.bz2
 # Source0-md5:	47a7efbdd2c9caaaa8e4360eb2beea21
 URL:		http://kin.klever.net/libopkele/
 BuildRequires:	boost-devel
+%{?with_apidocs:BuildRequires:	doxygen}
 BuildRequires:	libstdc++-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -64,6 +65,8 @@ Dokumentacja API biblioteki libopkele.
 	%{!?with_static_libs:--disable-static}
 %{__make}
 
+%{?with_apidocs:doxygen}
+
 %install
 rm -rf $RPM_BUILD_ROOT
 
@@ -78,28 +81,25 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc AUTHORS CREDITS ChangeLog NEWS README THANKS TODO
-%attr(755,root,root) %{_bindir}/*
-%attr(755,root,root) %{_libdir}/liblibopkele.so.*.*.*
-%{_datadir}/%{name}
+%doc AUTHORS NEWS
+%attr(755,root,root) %{_libdir}/libopkele.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libopkele.so.3
 
 %files devel
 %defattr(644,root,root,755)
-%doc devel-doc/*
-%{_libdir}/liblibopkele.so
-%{_libdir}/liblibopkele.la
-%{_includedir}/libopkele
-%{_aclocaldir}/libopkele.m4
+%{_libdir}/libopkele.so
+%{_libdir}/libopkele.la
+%{_includedir}/opkele
 %{_pkgconfigdir}/libopkele.pc
 
 %if %{with static_libs}
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/liblibopkele.a
+%{_libdir}/libopkele.a
 %endif
 
 %if %{with apidocs}
 %files apidocs
 %defattr(644,root,root,755)
-%doc apidocs/*
+%doc doxydox/html/*
 %endif
