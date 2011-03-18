@@ -13,8 +13,14 @@ Source0:	http://kin.klever.net/dist/%{name}-%{version}.tar.bz2
 # Source0-md5:	47a7efbdd2c9caaaa8e4360eb2beea21
 URL:		http://kin.klever.net/libopkele/
 BuildRequires:	boost-devel
+BuildRequires:	curl-devel
 %{?with_apidocs:BuildRequires:	doxygen}
+BuildRequires:	expat-devel
 BuildRequires:	libstdc++-devel
+BuildRequires:	libstdc++-devel
+BuildRequires:	openssl-devel
+BuildRequires:	pkgconfig
+BuildRequires:	tidy-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
