@@ -18,7 +18,7 @@ BuildRequires:	curl-devel
 BuildRequires:	expat-devel
 BuildRequires:	libstdc++-devel
 BuildRequires:	libstdc++-devel
-BuildRequires:	openssl-devel
+BuildRequires:	openssl-devel >= 0.9.8
 BuildRequires:	pkgconfig
 BuildRequires:	tidy-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
